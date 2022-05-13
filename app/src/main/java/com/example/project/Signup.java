@@ -26,9 +26,9 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        name=findViewById(R.id.signUp_name);
-        email=findViewById(R.id.signUp_email);
-        password=findViewById(R.id.signUp_password);
+        name=(TextInputLayout)findViewById(R.id.signUp_name);
+        email=(TextInputLayout)findViewById(R.id.signUp_email);
+        password=(TextInputLayout)findViewById(R.id.signUp_password);
         register=findViewById(R.id.signUp_register_btn);
         login=findViewById(R.id.signUp_login_btn);
 
@@ -37,13 +37,16 @@ public class Signup extends AppCompatActivity {
             createUser();
         });
 
+        login.setOnClickListener(view -> {
+            startActivity(new Intent(Signup.this, Login.class));
+        });
     }
 
-    public void createUser()
+    private void createUser()
     {
-        String temail = email.getEditText().toString();
-        String tname =name.getEditText().toString();
-        String tpassword =password.getEditText().toString();
+        String temail = email. getEditText().getText().toString().trim();
+        String tname =name.getEditText().getText().toString();
+        String tpassword =password.getEditText().getText().toString().trim();
 
         if(TextUtils.isEmpty(temail)){
             email.setError("Email can not be empty");
