@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="hint_name">Name</string>
+    <string name="register">Register</string>
+    <string name="btn_link_to_login">Login</string>
+</resources>

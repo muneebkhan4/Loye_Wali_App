@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "947375519118",
+    "project_id": "loye-wali-app",
+    "storage_bucket": "loye-wali-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947375519118:android:4f15368ab135e79c99a0df",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947375519118-8he8fe7ho1itf6dr2b5qcfjc7fsrvl5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMXHC7bKU9D5KRg4N2FLZqWpkljn2oOmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947375519118-8he8fe7ho1itf6dr2b5qcfjc7fsrvl5e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
