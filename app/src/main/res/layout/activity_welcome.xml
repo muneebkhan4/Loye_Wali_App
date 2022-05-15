@@ -14,8 +14,10 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
 
     <Button
         android:id="@+id/welcome_logout"
@@ -29,4 +31,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.054" />
+
+    <Button
+        android:id="@+id/welcome_addOrderBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="Add order"
+        app:backgroundTint="@color/LightBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/welcome_viewStockBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="View stock"
+        app:backgroundTint="@color/LightBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_addOrderBtn" />
+
+    <Button
+        android:id="@+id/welcome_addStockBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:text="add stock"
+        app:backgroundTint="@color/LightBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_viewStockBtn" />
+
+    <Button
+        android:id="@+id/welcome_viewHistoryBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="view history"
+        app:backgroundTint="@color/LightBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_addStockBtn" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_viewHistoryBtn"
+        app:srcCompat="@drawable/loya2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

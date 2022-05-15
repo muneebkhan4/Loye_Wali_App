@@ -44,8 +44,8 @@ public class Login extends AppCompatActivity {
 
     private void loginUser()
     {
-        String temail = email. getEditText().getText().toString().trim();
-        String tpassword =password.getEditText().getText().toString().trim();
+        String temail = email.getEditText().getText().toString();
+        String tpassword =password.getEditText().getText().toString();
 
         if(TextUtils.isEmpty(temail)){
             email.setError("Email can not be empty");
