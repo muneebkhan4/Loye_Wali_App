@@ -47,7 +47,7 @@ public class Welcome extends AppCompatActivity {
             FirebaseUser user=mAuth.getCurrentUser();
             mAuth.signOut();
             Intent intent = new Intent(Welcome.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                               // remove all previous activities, efficient log out
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);              // remove all previous activities, efficient log out
             startActivity(intent);
         });
     }
