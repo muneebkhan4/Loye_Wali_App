@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Loye Wali App</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -6,4 +6,16 @@
     <string name="hint_name">Name</string>
     <string name="register">Register</string>
     <string name="btn_link_to_login">Login</string>
+    <string name="title_activity_ad" tools:ignore="ExtraTranslation">AdActivity</string>
+    <string name="action_settings" tools:ignore="ExtraTranslation">Settings</string>
+
+
+    <string name="hello_world" tools:ignore="ExtraTranslation">Hello world!</string>
+    <!-- -
+        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="title_activity_ad_mob" tools:ignore="ExtraTranslation">AdMob</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544~3347511713</string>
+
 </resources>
