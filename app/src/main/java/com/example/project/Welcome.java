@@ -55,7 +55,6 @@ public class Welcome extends AppCompatActivity {
         });
 
         logout.setOnClickListener((view) -> {
-            FirebaseUser user=mAuth.getCurrentUser();
             mAuth.signOut();
             Intent intent = new Intent(Welcome.this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);              // remove all previous activities, efficient log out
@@ -72,10 +71,6 @@ public class Welcome extends AppCompatActivity {
                     public void onAdDismissedFullScreenContent() {
                         // Called when fullscreen content is dismissed.
                         Log.d("TAG", "The ad was dismissed.");
-                        FirebaseUser user=mAuth.getCurrentUser();
-                        mAuth.signOut();
-                        Intent intent = new Intent(Welcome.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                               // remove all previous activities, efficient log out
                         startActivity(intent);
                     }
 
@@ -122,7 +117,6 @@ public class Welcome extends AppCompatActivity {
                     }
                 });
     }
-
 
 
 }

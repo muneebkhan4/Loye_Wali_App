@@ -9,6 +9,7 @@
 
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="435dp"
         android:layout_height="259dp"
         android:src="@drawable/loya"
