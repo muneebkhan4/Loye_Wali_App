@@ -44,3 +44,4 @@ dependencies {
 
 // sdk admob
     implementation 'com.google.android.gms:play-services-ads:20.6.0'
+}
