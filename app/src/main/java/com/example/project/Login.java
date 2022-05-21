@@ -6,10 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -35,13 +33,10 @@ public class Login extends AppCompatActivity {
         loginBtn = findViewById(R.id.logIn_btn);
         mAuth = FirebaseAuth.getInstance();
 
-        registerBtn.setOnClickListener((view) -> {
-            startActivity(new Intent(Login.this, Signup.class));
-        });
+        registerBtn.setOnClickListener((view) -> startActivity(new Intent(Login.this, Signup.class)));
 
-        loginBtn.setOnClickListener((view) -> {
-            loginUser();
-        });
+        loginBtn.setOnClickListener((view) -> loginUser());
+
     }
 
     private void loginUser() {
