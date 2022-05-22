@@ -6,4 +6,7 @@
     <string name="hint_name">Name</string>
     <string name="register">Register</string>
     <string name="btn_link_to_login">Login</string>
+    <string name="length_tv">length</string>
+    <string name="quantity_tv">quantity</string>
+
 </resources>

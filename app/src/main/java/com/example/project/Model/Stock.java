@@ -5,19 +5,23 @@ import java.util.List;
 
 //Keeps the Reference of Rods.
 public class Stock {
-    List<RodInfo> listOfRods;
+    List<Rod_Info> listOfRods;
 
     public Stock()
     {
         this.listOfRods=new ArrayList<>();
     }
 
-    public void addRod(RodInfo rodInfo)
+    public void addRod(Rod_Info rodInfo)
     {
         this.listOfRods.add(rodInfo);
     }
 
-    public List<RodInfo> getListOfRods() {
+    public void setListOfRods(List<Rod_Info> listOfRods) {
+        this.listOfRods = listOfRods;
+    }
+
+    public List<Rod_Info> getListOfRods() {
         return listOfRods;
     }
 }

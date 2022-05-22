@@ -47,6 +47,10 @@ public class Login extends AppCompatActivity {
         String temail = email.getEditText().getText().toString();
         String tpassword =password.getEditText().getText().toString();
 
+        //Pls Remove this code
+        temail="uahmad565@gmail.com";
+        tpassword="junglebook565";
+
         if(TextUtils.isEmpty(temail)){
             email.setError("Email can not be empty");
             email.requestFocus();

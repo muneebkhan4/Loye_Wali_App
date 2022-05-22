@@ -5,6 +5,7 @@ public class Seller {
     String name;
     String email;
     Stock stock;
+    History history;
 
     Seller(String id,String name,String email)
     {
@@ -13,9 +14,34 @@ public class Seller {
         this.email=email;
     }
 
+    public void addOrderToHistory(Order order)
+    {
+        this.history.addOrder(order);
+    }
+
     public void addStock(Stock stock)
     {
         this.stock=stock;
     }
 
+//    public void subtractStock(Stock stock)
+//    {
+//
+//    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getId() {
+        return id;
+    }
 }

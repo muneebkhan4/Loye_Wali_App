@@ -1,48 +1,40 @@
 package com.example.project;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.project.Model.Iron_Info;
+import com.example.project.Model.Rod_Info;
+import com.example.project.RecyclerViews.IronAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewStock extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_stock);
-        mAuth=FirebaseAuth.getInstance();
 
-        mAuthListener=new FirebaseAuth.AuthStateListener(){
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Toast.makeText(ViewStock.this,"Your UserID: " + user.getUid(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
+        // data to populate the RecyclerView with
+        List<Iron_Info> animalNames = new ArrayList<>();
+        animalNames.add(new Rod_Info("100","5"));
+        animalNames.add(new Rod_Info("50","3"));
+        animalNames.add(new Rod_Info("80","9"));
+        animalNames.add(new Rod_Info("60","10"));
+        animalNames.add(new Rod_Info("200","7"));
 
-        //FirebaseUser user=firebaseAuth.getCurrentUser();
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.IronRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        IronAdapter adapter = new IronAdapter(this, animalNames);
+        recyclerView.setAdapter(adapter);
+
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    public void onStop(){
-        super.onStop();
-        mAuth.removeAuthStateListener(mAuthListener);
-    }
 }
 
