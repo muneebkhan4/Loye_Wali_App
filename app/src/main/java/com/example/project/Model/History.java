@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class History {
-    private List<Order> listOfOrders;
+    private List<Order> listOfOrders=new ArrayList<>();
 
     public History()
     {
-        this.listOfOrders=new ArrayList<Order>();
+
     }
+
 
     public void addOrder(Order order)
     {

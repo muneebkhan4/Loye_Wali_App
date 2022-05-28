@@ -4,6 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddStock">
+    tools:context=".AddOrder">
+
+    <TextView
+        android:id="@+id/addStock_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="49dp"
+        android:text="Add Stock"
+        app:layout_constraintBottom_toTopOf="@+id/addStock_length_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="35dp"/>
+
+
+    <TextView
+        android:id="@+id/addStock_length_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="44dp"
+        android:text="Length(ft)"
+        app:layout_constraintEnd_toStartOf="@+id/addStock_length_et"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/addStock_quantity_tv"
+        android:layout_width="61dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="44dp"
+        android:text="Quantity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addStock_quantity_et"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addStock_length_tv"
+        app:layout_constraintVertical_bias="0.003" />
+
+    <EditText
+        android:id="@+id/addStock_length_et"
+        android:layout_width="121dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="116dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/addStock_quantity_et"
+        android:layout_width="122dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="116dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addStock_length_et"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <Button
+        android:id="@+id/addStock_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        android:text="ADD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addStock_quantity_et"
+        app:layout_constraintVertical_bias="0.852" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
