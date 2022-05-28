@@ -1,16 +1,16 @@
 package com.example.project.RecyclerViews;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.project.Model.Iron_Info;
+import com.example.project.AlertDialogs;
 import com.example.project.Model.Order;
 import com.example.project.R;
 
@@ -61,13 +61,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             clientName_tv = itemView.findViewById(R.id.item_order_name);
             date_tv = itemView.findViewById(R.id.item_order_date);
             itemView.findViewById(R.id.item_order_btn).setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"Rods button pressed",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(view.getContext(),"Rods button pressed",Toast.LENGTH_SHORT).show();
+                    int position=getBindingAdapterPosition();
+                    Order order=mData.get(position);
+                    AlertDialogs.ShowAlertDialogWithListview(mInflater.getContext(),order.getListOfRods(), order.getClientName());
                 }
             });
         }
     }
+
 
 
 

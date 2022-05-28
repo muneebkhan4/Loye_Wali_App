@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
         String temail = email.getEditText().getText().toString();
         String tpassword =password.getEditText().getText().toString();
 
+
         if(TextUtils.isEmpty(temail)){
             email.setError("Email can not be empty");
             email.requestFocus();
@@ -60,6 +61,7 @@ public class Login extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
+
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Login.this, Welcome.class));
                     }

@@ -6,37 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".AddOrder">
 
+    <TextView
+        android:id="@+id/addOrder_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="49dp"
+        android:text="@string/OrderTitle"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/addOrder_length_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/addOrder_length_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
         android:layout_marginEnd="44dp"
         android:text="Length(ft)"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberSigned"
+        app:layout_constraintEnd_toStartOf="@+id/addOrder_length_et"
         app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/addOrder_quantity_tv"
         android:layout_width="61dp"
         android:layout_height="17dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="44dp"
         android:text="Quantity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberSigned2"
+        app:layout_constraintEnd_toStartOf="@+id/addOrder_quantity_et"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintTop_toBottomOf="@+id/addOrder_length_tv" />
+
 
     <EditText
-        android:id="@+id/editTextNumberSigned"
+        android:id="@+id/addOrder_length_et"
         android:layout_width="121dp"
         android:layout_height="41dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="116dp"
         android:ems="10"
         android:inputType="number"
@@ -44,7 +56,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNumberSigned2"
+        android:id="@+id/addOrder_quantity_et"
         android:layout_width="122dp"
         android:layout_height="43dp"
         android:layout_marginTop="32dp"
@@ -53,21 +65,75 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberSigned"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toBottomOf="@+id/addOrder_length_et"
+        app:layout_constraintVertical_bias="0.004" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addOrder_add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="296dp"
+        android:layout_marginTop="100dp"
         android:text="ADD"
+        android:onClick="addOnClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberSigned2"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintTop_toBottomOf="@+id/addOrder_name_et"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <Button
+        android:id="@+id/addOrder_view_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View"
+        android:onClick="viewOnClick"
+        app:layout_constraintBottom_toTopOf="@+id/addOrder_compute_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addOrder_add_btn" />
+
+    <EditText
+        android:id="@+id/addOrder_name_et"
+        android:layout_width="204dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="48dp"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addOrder_quantity_et"
+        app:layout_constraintVertical_bias="0.021" />
+
+    <TextView
+        android:id="@+id/addOrder_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Client Name"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addOrder_name_et"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addOrder_quantity_tv"
+        app:layout_constraintVertical_bias="0.002" />
+
+    <Button
+        android:id="@+id/addOrder_compute_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compute"
+        android:onClick="computeOnClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.853" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

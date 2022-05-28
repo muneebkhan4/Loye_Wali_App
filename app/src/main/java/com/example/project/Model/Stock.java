@@ -1,27 +1,37 @@
 package com.example.project.Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
-//Keeps the Reference of Rods.
 public class Stock {
-    List<Rod_Info> listOfRods;
+    HashMap<String,Iron_Info> listOfRods;
 
     public Stock()
     {
-        this.listOfRods=new ArrayList<>();
+
     }
 
-    public void addRod(Rod_Info rodInfo)
+
+    public void addRod(Iron_Info newRodInfo)
     {
-        this.listOfRods.add(rodInfo);
+        if(listOfRods==null)
+        {
+            listOfRods=new HashMap<>();
+        }
+        Iron_Info rod=listOfRods.get(newRodInfo.getLength());
+        if (rod != null) {
+            String added = Help.add(rod.getQuantity(), newRodInfo.getQuantity());
+            newRodInfo.setQuantity(added);
+        }
+        listOfRods.put(newRodInfo.getLength(),newRodInfo);
+
     }
 
-    public void setListOfRods(List<Rod_Info> listOfRods) {
+    public void setListOfRods(HashMap<String,Iron_Info> listOfRods) {
         this.listOfRods = listOfRods;
     }
 
-    public List<Rod_Info> getListOfRods() {
+    public HashMap<String,Iron_Info> getListOfRods() {
         return listOfRods;
     }
 }
+

@@ -5,10 +5,33 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Order {
-    private HashMap<String,Iron_Info> listOfRods;
+    private HashMap<String,Iron_Info> listOfRods=null;
     private String dateTime;
     private String price;
     private String clientName;
+
+    public Order()
+    {
+
+    }
+
+    public Order(Order o)
+    {
+        this.dateTime=o.dateTime;
+        this.price=o.price;
+        this.clientName=o.clientName;
+        listOfRods=new HashMap<>(o.listOfRods);
+    }
+
+    public Order(String dateTime,String price,String clientName)
+    {
+        this.listOfRods=new HashMap<>();
+        this.dateTime=dateTime;
+        this.price=price;
+        this.clientName=clientName;
+    }
+
+
 
     public Order(String dateTime,String clientName,Iron_Info iron)
     {
@@ -24,6 +47,10 @@ public class Order {
 
     public void addRod(Iron_Info newRodInfo)
     {
+        if(listOfRods==null)
+        {
+            listOfRods=new HashMap<>();
+        }
         Iron_Info rod=listOfRods.get(newRodInfo.getLength());
         if(rod==null) //doesnot exist
         {
@@ -35,6 +62,10 @@ public class Order {
             newRodInfo.setQuantity(added);
             listOfRods.put(newRodInfo.getLength(),newRodInfo);
         }
+    }
+
+    public void setListOfRods(HashMap<String, Iron_Info> listOfRods) {
+        this.listOfRods = listOfRods;
     }
 
     public void setClientName(String clientName) {

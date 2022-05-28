@@ -5,7 +5,7 @@ import java.util.HashMap;
 public interface Iron_Info {
     String getLength();
     String getQuantity();
-    String getName();
+    String typeOfIron();
     void setQuantity(String quantity);
 
     public static int[] convertToArray(Iron_Info iron_Info) {
