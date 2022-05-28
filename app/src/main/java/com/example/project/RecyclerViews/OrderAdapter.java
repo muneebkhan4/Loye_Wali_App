@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,8 +19,8 @@ import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
-    private List<Order> mData;
-    private LayoutInflater mInflater;
+    private final List<Order> mData;
+    private final LayoutInflater mInflater;
 
     // data is passed into the constructor
     public OrderAdapter(Context context, List<Order> data) {
@@ -28,8 +29,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     // inflates the row layout from xml when needed
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_order, parent,false);
         return new ViewHolder(view);
     }
@@ -61,11 +63,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             clientName_tv = itemView.findViewById(R.id.item_order_name);
             date_tv = itemView.findViewById(R.id.item_order_date);
             itemView.findViewById(R.id.item_order_btn).setOnClickListener(new View.OnClickListener() {
+
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onClick(View view) {
                     //Toast.makeText(view.getContext(),"Rods button pressed",Toast.LENGTH_SHORT).show();
-                    int position=getBindingAdapterPosition();
+                    int position= getBindingAdapterPosition();
                     Order order=mData.get(position);
                     AlertDialogs.ShowAlertDialogWithListview(mInflater.getContext(),order.getListOfRods(), order.getClientName());
                 }

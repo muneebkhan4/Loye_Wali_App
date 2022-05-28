@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project.Model.Iron_Info;
@@ -15,8 +16,8 @@ import java.util.List;
 
 public class IronAdapter extends RecyclerView.Adapter<IronAdapter.ViewHolder> {
 
-    private List<Iron_Info> mData;
-    private LayoutInflater mInflater;
+    private final List<Iron_Info> mData;
+    private final LayoutInflater mInflater;
 
     // data is passed into the constructor
     public IronAdapter(Context context, List<Iron_Info> data) {
@@ -25,8 +26,9 @@ public class IronAdapter extends RecyclerView.Adapter<IronAdapter.ViewHolder> {
     }
 
     // inflates the row layout from xml when needed
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_iron, parent, false);
         return new ViewHolder(view);
     }
@@ -47,7 +49,7 @@ public class IronAdapter extends RecyclerView.Adapter<IronAdapter.ViewHolder> {
 
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView quantity_tv;
         TextView length_tv;
 
