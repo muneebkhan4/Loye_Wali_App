@@ -98,7 +98,7 @@ public class Seller {
             while(iterator.hasNext())
             {
                 Iron_Info iron=iterator.next().getValue();
-                if(Help.Integer( iron.getQuantity())<2) //Stock is about to finish
+                if(Help.Integer( iron.getQuantity())<5) //Stock is about to finish
                 {
                     return true;
                 }

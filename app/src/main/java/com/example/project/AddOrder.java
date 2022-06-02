@@ -3,8 +3,14 @@ package com.example.project;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.project.Model.Help;
+import com.example.project.Model.History;
 import com.example.project.Model.Iron_Info;
 import com.example.project.Model.Order;
 import com.example.project.Model.Rod_Info;
@@ -31,6 +38,7 @@ import java.text.SimpleDateFormat;
 
 public class AddOrder extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "1";
     Order order;
     Seller seller;
     private FirebaseAuth mAuth;
@@ -81,14 +89,9 @@ public class AddOrder extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void computeOnClick(View view) {
-        if(order==null || order.getListOfRods()==null ||order.getListOfRods().size()<1)
-        {
-            Toast.makeText(AddOrder.this, "No Orders added yet", Toast.LENGTH_SHORT).show();
-            return;
-        }
         if(!validateEditFields())
         {
-            Toast.makeText(AddOrder.this, "No Order added yet ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddOrder.this, "No Order yet ", Toast.LENGTH_SHORT).show();
             return;
         }
         boolean result = seller.computeOrder(new Order(order));
@@ -103,26 +106,45 @@ public class AddOrder extends AppCompatActivity {
             mDatabase = FirebaseDatabase.getInstance().getReference();
             DatabaseReference reference = mDatabase.child(userId);
             reference.child("Stock").setValue(seller.getStock());
+
             order.setClientName(name_et.getText().toString());
             order.setPrice("0");
             @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("(HH:mm)dd MM yyyy").format(new java.util.Date());
             order.setDateTime(timeStamp);
             reference.child("History").child("listOfOrders").push().setValue(order);
-            Toast.makeText(AddOrder.this, "Order Completed.", Toast.LENGTH_SHORT).show();
 
-            if(seller.needStockNotification())
-            {
-                //Toast.makeText(AddOrder.this, "Stock low!", Toast.LENGTH_SHORT).show();
+
+            if(seller.needStockNotification()) {
+
+                createNotificationChannel();
+
+                // Create an explicit intent for an Activity in your app
+                Intent intent = new Intent(this, ViewStock.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.warn)
+                        .setContentTitle("Stock Low")
+                        .setContentText("Your stock is low. Click here to check")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        // Set the intent that will fire when the user taps the notification
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+                // notificationId is a unique int for each notification that you must define
+                int notificationId = 1;
+                notificationManager.notify(notificationId, builder.build());
             }
         }
-        order=new Order();
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void viewOnClick(View view) {
         AlertDialogs.ShowAlertDialogWithListview(AddOrder.this, order.getListOfRods(), "Order Rods");
-
     }
 
 
@@ -167,7 +189,23 @@ public class AddOrder extends AppCompatActivity {
             return true;
         }
         return false;
-
     }
 
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
 }
+
+
