@@ -89,6 +89,26 @@ public class Seller {
 
     }
 
+    public boolean needStockNotification()
+    {
+        if(stock!=null && stock.getListOfRods()!=null)
+        {
+            HashMap<String,Iron_Info> listOfRods=stock.getListOfRods();
+            Iterator<Map.Entry<String,Iron_Info>> iterator = listOfRods.entrySet().iterator();
+            while(iterator.hasNext())
+            {
+                Iron_Info iron=iterator.next().getValue();
+                if(Help.Integer( iron.getQuantity())<2) //Stock is about to finish
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+        return false;
+    }
+
     public Stock getStock() {
         return stock;
     }

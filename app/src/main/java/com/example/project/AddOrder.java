@@ -81,9 +81,14 @@ public class AddOrder extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void computeOnClick(View view) {
+        if(order==null || order.getListOfRods()==null ||order.getListOfRods().size()<1)
+        {
+            Toast.makeText(AddOrder.this, "No Orders added yet", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(!validateEditFields())
         {
-            Toast.makeText(AddOrder.this, "No Order yet ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddOrder.this, "No Order added yet ", Toast.LENGTH_SHORT).show();
             return;
         }
         boolean result = seller.computeOrder(new Order(order));
@@ -103,8 +108,14 @@ public class AddOrder extends AppCompatActivity {
             @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("(HH:mm)dd MM yyyy").format(new java.util.Date());
             order.setDateTime(timeStamp);
             reference.child("History").child("listOfOrders").push().setValue(order);
+            Toast.makeText(AddOrder.this, "Order Completed.", Toast.LENGTH_SHORT).show();
 
+            if(seller.needStockNotification())
+            {
+                //Toast.makeText(AddOrder.this, "Stock low!", Toast.LENGTH_SHORT).show();
+            }
         }
+        order=new Order();
     }
 
 
