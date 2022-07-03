@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Objects;
 
 public class Signup extends AppCompatActivity {
+    private ProgressDialog mProgress;
     TextInputLayout name,email,password;
     MaterialButton register,login;
     FirebaseAuth mAuth;
@@ -32,6 +34,11 @@ public class Signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        mProgress=new ProgressDialog(this);
+        String titleID="Signing up...";
+        mProgress.setTitle(titleID);
+        mProgress.setMessage("Please wait..");
 
         name=(TextInputLayout)findViewById(R.id.signUp_name);
         email=(TextInputLayout)findViewById(R.id.signUp_email);
@@ -48,6 +55,7 @@ public class Signup extends AppCompatActivity {
 
         login.setOnClickListener(view -> {
             startActivity(new Intent(Signup.this, Login.class));
+            finish();
         });
 
 
@@ -55,6 +63,7 @@ public class Signup extends AppCompatActivity {
 
     private void createUser()
     {
+        mProgress.show();
         String temail = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
         String tname = Objects.requireNonNull(name.getEditText()).getText().toString();
         String tpassword = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
@@ -62,16 +71,19 @@ public class Signup extends AppCompatActivity {
         if(TextUtils.isEmpty(temail)){
             email.setError("Email can not be empty");
             email.requestFocus();
+            mProgress.dismiss();
         }
         else if(TextUtils.isEmpty(tpassword)){
             password.setError("Password can not be empty");
             password.requestFocus();
+            mProgress.dismiss();
         }
         else{
             mAuth.createUserWithEmailAndPassword(temail, tpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()) {
+                        mProgress.dismiss();
                         Toast.makeText(Signup.this, "User Registered Successfully", Toast.LENGTH_SHORT).show();
                         //Creating Person on Real Time Database
                         FirebaseUser firebaseUser =mAuth.getCurrentUser();
@@ -81,10 +93,12 @@ public class Signup extends AppCompatActivity {
                         Seller seller=new Seller(userId,tname,email,new Stock());
                         mDatabase.child(userId).setValue(seller);
 
-                        startActivity(new Intent(Signup.this, Login.class));
+                        startActivity(new Intent(Signup.this, Welcome.class));
+                        finish();
                     }
                     else{
                         Toast.makeText(Signup.this, "Registration Error"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                        mProgress.dismiss();
                     }
                 }
             });

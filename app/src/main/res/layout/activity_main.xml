@@ -10,11 +10,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="435dp"
-        android:layout_height="259dp"
-        android:src="@drawable/loya"
+        android:layout_width="410dp"
+        android:layout_height="249dp"
+        android:src="@drawable/loya2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
