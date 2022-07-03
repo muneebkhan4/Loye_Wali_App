@@ -44,7 +44,6 @@ public class AddOrder extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
-
     private EditText length_et;
     private EditText quantity_et;
     private EditText name_et;
@@ -77,14 +76,11 @@ public class AddOrder extends AppCompatActivity {
                 }
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

@@ -17,7 +17,6 @@ public class AlertDialogs {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void ShowAlertDialogWithListview(Context context, HashMap<String,Iron_Info> x, String title)
     {
-
         if(x==null)
             return;
         String[] strings = Arrays.stream(x.values().toArray()).map(Object::toString).toArray(String[]::new);

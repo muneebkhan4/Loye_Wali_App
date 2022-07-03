@@ -47,8 +47,6 @@ public class ViewStock extends AppCompatActivity {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference reference = mDatabase.child(userId).child("Stock").child("listOfRods");
 
-
-
         reference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -63,11 +61,8 @@ public class ViewStock extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
     }
-
 }
 

@@ -48,7 +48,6 @@ public class Login extends AppCompatActivity {
             loginUser();
         });
     }
-
     private void loginUser()
     {
         mProgress.show();

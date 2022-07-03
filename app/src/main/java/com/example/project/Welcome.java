@@ -16,7 +16,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-
 public class Welcome extends AppCompatActivity {
 
     Button logout, addStock, viewStock, addOrder, viewHistory;
@@ -56,7 +55,6 @@ public class Welcome extends AppCompatActivity {
         viewHistory.setOnClickListener((view) -> {
             startActivity(new Intent(Welcome.this, ViewHistory.class));
         });
-
         logout.setOnClickListener((view) -> {
             mAuth.signOut();
             Intent intent = new Intent(Welcome.this, MainActivity.class);
@@ -65,7 +63,6 @@ public class Welcome extends AppCompatActivity {
             // showing ads
             if (mInterstitialAd != null) {
                 mInterstitialAd.show(Welcome.this);       // show ad
-
                 mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
                     @Override
                     public void onAdDismissedFullScreenContent() {
@@ -73,13 +70,11 @@ public class Welcome extends AppCompatActivity {
                         Log.d("TAG", "The ad was dismissed.");
                         startActivity(intent);
                     }
-
                     @Override
                     public void onAdFailedToShowFullScreenContent(AdError adError) {
                         // Called when fullscreen content failed to show.
                         Log.d("TAG", "The ad failed to show.");
                     }
-
                     @Override
                     public void onAdShowedFullScreenContent() {
                         // Called when fullscreen content is shown.
@@ -90,33 +85,24 @@ public class Welcome extends AppCompatActivity {
                     }
                 });
 
-
-
             } else {
                 Log.d("TAG", "The interstitial ad wasn't ready yet.");
             }
-
             //startActivity(intent);
         });
-
-
     }
 
     // load interstitial ad
     void loadInterstitialAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
-
-        InterstitialAd.load(this, getString(R.string.interstitial_ad_unit_id), adRequest,
-                new InterstitialAdLoadCallback() {
+        InterstitialAd.load(this, getString(R.string.interstitial_ad_unit_id), adRequest, new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        Log.i("TAG", "onAdLoaded");
-                    }
-                });
+              // The mInterstitialAd reference will be null until
+              // an ad is loaded.
+              mInterstitialAd = interstitialAd;
+              Log.i("TAG", "onAdLoaded");
+            }
+        });
     }
-
-
 }

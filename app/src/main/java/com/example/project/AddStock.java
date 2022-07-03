@@ -56,10 +56,8 @@ public class AddStock extends AppCompatActivity {
                     Iron_Info rodInfo=snapshot2.getValue(Rod_Info.class);
                     listOfRods.put(rodInfo.getLength(),rodInfo);
                 }
-
             }
         });
-
 
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +94,5 @@ public class AddStock extends AppCompatActivity {
                }
             }
         });
-
-
-
     }
-
-
-
-
 }

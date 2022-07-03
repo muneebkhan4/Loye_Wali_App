@@ -57,8 +57,6 @@ public class Signup extends AppCompatActivity {
             startActivity(new Intent(Signup.this, Login.class));
             finish();
         });
-
-
     }
 
     private void createUser()

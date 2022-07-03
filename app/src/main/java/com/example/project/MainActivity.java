@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     Button stop;
 
     AdView mAdView;
-
     static boolean flag = true;
 
 
@@ -44,12 +43,9 @@ public class MainActivity extends AppCompatActivity {
         start = findViewById(R.id.start);
         stop = findViewById(R.id.stop);
 
-
-
         login.setOnClickListener((view) -> startActivity(new Intent(MainActivity.this, Login.class)));
 
         signup.setOnClickListener((view) -> startActivity(new Intent(MainActivity.this, Signup.class)));
-
 
         start.setOnClickListener( (view)->{
             if (flag)
@@ -81,9 +77,6 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
-
-
     }
 
     @Override
